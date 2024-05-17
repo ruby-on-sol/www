@@ -1,4 +1,5 @@
 import React from "react";
+import NextImage from "next/image";
 
 const TokenBurnSection: React.FC = () => {
   return (
@@ -18,13 +19,13 @@ const TokenBurnSection: React.FC = () => {
           </div>
         </div>
         <div className="flex justify-center w-full md:w-1/3 py-16">
-          <img
+          <NextImage
             alt="$RUBY"
             decoding="async"
             height={602}
             width={531}
             loading="lazy"
-            src="https://www.rubyonsol.com/_vercel/image?url=_astro%2Fchart.Dvc8LbWX.png&amp;w=640&amp;q=100"
+            src="/images/chart.png"
             className="ruby"
           />
         </div>

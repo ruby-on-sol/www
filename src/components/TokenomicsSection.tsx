@@ -1,4 +1,5 @@
 import React from "react";
+import NextImage from "next/image";
 
 const TokenomicsSection: React.FC = () => {
   return (
@@ -48,7 +49,7 @@ const TokenomicItem: React.FC<{
 }> = ({ imgAlt, imgSrc, title, value }) => {
   return (
     <li className="flex items-center gap-4">
-      <img
+      <NextImage
         alt={imgAlt}
         decoding="async"
         height={69}

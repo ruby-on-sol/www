@@ -1,6 +1,5 @@
-// app/components/Footer.tsx
-
 import React from "react";
+import NextImage from "next/image";
 
 const Footer: React.FC = () => {
   return (
@@ -51,7 +50,7 @@ const SocialLink: React.FC<{ href: string; title: string; imgSrc: string }> = ({
 }) => {
   return (
     <a href={href} target="_blank" rel="noreferrer" title={title}>
-      <img
+      <NextImage
         alt={title}
         decoding="async"
         height={30}

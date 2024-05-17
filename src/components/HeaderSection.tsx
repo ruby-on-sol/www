@@ -13,7 +13,7 @@ const HeaderSection: React.FC = () => {
         src="/images/logo.svg"
         className="mb-6"
       />
-      <h1>CAN'T KEEP A GOOD DOG DOWN</h1>
+      <h1>CAN&apos;T KEEP A GOOD DOG DOWN</h1>
       <div className="container flex gap-4 md:h-24 my-8 py-0">
         <nav className="flex items-center gap-3 justify-center md:justify-start sm:gap-6">
           <SocialLink
