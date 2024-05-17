@@ -2,32 +2,199 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-cyrillic-ext-400-normal.woff2') format('woff2'),
+       url('/fonts/inter-cyrillic-ext-400-normal.woff') format('woff');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Repeat the above @font-face block for other font variations (weights, unicode ranges) */
+
+body {
+  background-color: rgb(219, 158, 113);
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.button {
+  white-space: nowrap;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 2rem;
+  background: #db9e71;
+  font-weight: 900;
+  font-size: 1.3rem;
+  align-self: center;
+  display: flex
+}
+
+.button--alt {
+  background: #2b1c11;
+  color: #db9e71
+}
+
+
+@media (min-width: 768px) {
+  .button--alt {
+    @apply hidden;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Add other necessary custom styles here */
+
+.curved {
+  @apply rounded-[4.5rem];
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.ruby {
+  @apply max-w-full;
+}
+
+@media (min-width: 768px) {
+  .ruby {
+    @apply max-w-[150%] transform translate-x-[30%];
+  }
+}
+
+@media (min-width: 960px) {
+  .ruby {
+    @apply max-w-full transform-none;
+  }
+}
+
+.live {
+  @apply relative flex items-center tracking-wide;
+}
+
+.live span {
+  @apply px-2;
+}
+
+.live:before {
+  content: "";
+  @apply w-4 h-4 rounded-full bg-white inline-block animate-fadeInOut;
+}
+
+.dark {
+  --background: 25 50% 5%;
+  --foreground: 25 5% 90%;
+  --card: 25 50% 0%;
+  --card-foreground: 25 5% 90%;
+  --popover: 25 50% 5%;
+  --popover-foreground: 25 5% 90%;
+  --primary: 25 43.3% 11.8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 25 30% 10%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: -13 30% 15%;
+  --muted-foreground: 25 5% 60%;
+  --accent: -13 30% 15%;
+  --accent-foreground: 25 5% 90%;
+  --destructive: 0 100% 30%;
+  --destructive-foreground: 25 5% 90%;
+  --border: 25 30% 18%;
+  --input: 25 30% 18%;
+  --ring: 25 43.3% 11.8%;
+  --radius: 1rem
+}
+
+h1 {
+  font-size: 5.5rem;
+  line-height: 104%;
+}
+
+h2 {
+  font-size: 4.12rem
+}
+
+@media (max-width: 1200px) {
+  h1 {
+      font-size:4.5rem;
+  }
+}
+
+@media (max-width: 960px) {
+  h1 {
+      font-size:3rem;
+      line-height: initial
+  }
+
+  h2 {
+      font-size: 2.5rem
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+      font-size:2.5rem;
+      line-height: initial
+  }
+
+  h2 {
+      font-size: 2rem
+  }
+}
+
+.grid-cols-tokens {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-tokensmd {
+    grid-template-columns: repeat(2, minmax(0, 330px));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-tokenslg {
+    grid-template-columns: repeat(3, minmax(0, 330px));
+  }
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem
+}
+
+@media (min-width: 1600px) {
+  .container {
+      max-width:1600px
+  }
+}
+
+/* Add this to the existing globals.css */
+.scrolling-container {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.scrolling-text {
+  will-change: transform;
+  transform: translateZ(0);
+  animation-name: scrollLeft;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  font-size: 1rem;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-100%);
   }
 }
